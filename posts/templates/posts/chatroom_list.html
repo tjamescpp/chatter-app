@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+
+{% block title %}
+<title>Chatter - Rooms</title>
+<h5 class="mb-3 text-center">
+    Rooms
+    <span class="badge bg-success rounded-pill">
+        {{chatrooms_list.all|length}}
+    </span>
+</h5>
+{% endblock %}
+
+{% block chatrooms %}
+<div class="container-fluid">
+    <div class="row p-1">
+        <div class="col">
+            <div class="list-group-flush list-group-numbered">
+                {% for room in chatrooms_list %}
+                    <a href="{% url 'chatroom.detail' room.id %}" class="list-group-item list-group-item-action p-2">
+                        {{room.name|capfirst}}
+                        <span class="position-absolute start-50 badge rounded-pill bg-success">
+                            {{room.posts.all|length}}
+                            <span class="visually-hidden">unread messages</span>
+                        </span>
+                    </a>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

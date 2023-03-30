@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+
+{% block title %}
+<title>Chatter - Home</title>
+<h5 class="mb-3 text-center">
+    Home
+    <span class="badge bg-success rounded-pill">
+        {{posts_list.all|length}}
+    </span>
+</h5>
+{% endblock title%}
+
+{% block my_posts %}
+{% if posts_list %} 
+    <div class="container-fluid">
+        <ul class="list-group-flush">
+            {% for post in posts_list %}
+                <li class="list-group-item text-bg-dark border-bottom border-1 border-success m-2 p-2">
+                    <div class="row mx-1 mb-2">
+                        {{post.post_text}}
+                    </div>
+                    {% if post.post_image %}
+                        <img src="{{post.post_image.url}}" class="img-fluid rounded mb-2" style="width: 650px;">
+                    {% endif %}
+                    <div class="row">
+                        <p style="font-size: xx-small;">
+                            <i class="bi bi-chat-left-text mx-1"></i>{{post.chatroom|capfirst}}
+                            <i class="bi bi-calendar3 mx-1"></i>{{post.pub_date}}
+                            <i class="bi bi-heart mx-1"></i>{{post.likes}}
+                        </p>
+                    </div>
+                </li>
+            {% endfor %}
+        </ul>
+    </div>
+{% else %}
+    <div class="row row-cols3 g-2">
+        <div class="col">
+            <div class="p-3 border">
+                No posts available
+            </div>
+        </div>
+    </div>
+{% endif %}
+
+{% endblock my_posts %}
