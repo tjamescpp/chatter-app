@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+{% block title %}
+<title>Chatter - {{ chatroom.name|capfirst }}</title>
+<h5 class="mb-3 text-center">
+    {{ chatroom.name|capfirst }}
+    <span class="badge bg-success rounded-pill">
+        {{chatroom.posts.all|length}}
+    </span>
+</h5>
+{% endblock %}
+
+{% block chatroom_posts %}
+<div class="container-fluid">
+    <ul class="list-group-flush">
+        {% for post in chatroom.posts.all reversed %}
+            <li class="list-group-item text-bg-dark border-bottom border-success border-1 m-2 p-2">
+                <div class="row">
+                    <i class="bi bi-person m-1" style="font-size: x-small;"> {{post.user}}</i>
+                </div>
+                <div class="row mx-1 mb-2">
+                    {{post.post_text}}
+                </div>
+                {% if post.post_image %}
+                    <img src="{{post.post_image.url}}" class="img-fluid rounded mb-2" style="width: 650;">
+                {% endif %}
+                <div class="row">
+                    <p style="font-size: xx-small;">
+                        <i class="bi bi-calendar3 mx-1"></i>{{post.pub_date}}
+                        <i class="bi bi-heart mx-1"></i>{{post.likes}}
+                    </p>
+                </div>
+            </li>
+        {% endfor %}
+    </ul>
+</div>
+{% endblock %}

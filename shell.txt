@@ -1,0 +1,4 @@
+>>> room.posts.all()[0]
+<Post: First message in general>
+>>> room.posts.all()[0].user
+<User: tommy>

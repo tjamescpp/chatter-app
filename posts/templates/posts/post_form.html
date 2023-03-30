@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% block form %}
+    <title>New Post</title>
+    <div class="container p-1">
+        <form action="{% url 'posts.new' %}" enctype="multipart/form-data" method="POST">
+            <div class="mb-3">
+                {% csrf_token %}{{ form }}
+            </div>
+            <div class="btn-group" role="group">
+                <button type="submit" class="btn btn-success btn-sm active mt-3">Submit</button>
+            </div>
+        </form>
+    </div>
+{% endblock %}
