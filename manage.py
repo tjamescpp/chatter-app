@@ -11,11 +11,15 @@ def main():
         from django.core.management import execute_from_command_line
 
         # Get port from environment or default to 8000
-        port = os.environ.get("PORT", "8000")
+        port = os.environ.get("PORT")
         args = sys.argv
 
-        if len(args) == 1 or (args[1] == "runserver" and len(args) == 2):
-            args += [f"0.0.0.0:{port}"]
+        # Only modify if running the server with no specific port
+        if len(args) == 2 and args[1] == "runserver":
+            if port:
+                args.append(f"0.0.0.0:{port}")  # For Render
+            else:
+                args.append("127.0.0.1:8000")   # Local default
     except ImportError as exc:
         raise ImportError(
             "Couldn't import Django. Are you sure it's installed and "
