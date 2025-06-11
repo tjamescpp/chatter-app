@@ -26,7 +26,7 @@ SECRET_KEY = "django-insecure-)pkoxvs=^_o1)z0!=%o9$f1@je(ghp8bm+%%_%*lbxpstt^_35
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["chatter-app-n87k.onrender.com"]
 
 
 # Application definition
