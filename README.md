@@ -1,9 +1,8 @@
-Full-stack Social Media Web App
+## Chatter - Social Media Web App
 
 -   I created a mock social media web app using Python Django as a personal
     project.
--   It's a chatroom app that has posts for different subjects, a home feed that
-    shows all of your posts, and other users posts in the chatrooms.
+-   It's a chat room app that has rooms for different subjects (e.g. Sports)
 -   The app is deployed on Render. It may take a few minutes to load because
     it's using the free version.
 
